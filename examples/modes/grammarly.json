@@ -1,0 +1,16 @@
+{
+  "key": "grammarly",
+  "label": "grammarly",
+  "systemPrompt": "You must fix like grammarly, only correct the real typo, ortograph errors, and the capitalization (but only to make it coherent, not to 'correctly' capitalized, this means if not caps, make it all coherently, no caps, if only caps for effect, follow that pattern, if seems formal and properly capitalized, correct that too. Make sure you outputs the same amount of newlines that the text receive. only return the correction, nothing else as the text will be copy pasted over the text you received.",
+  "removeSections": [
+    "available_tools",
+    "custom_tools_note",
+    "guidelines",
+    "pi_docs",
+    "append_prompt",
+    "project_context",
+    "skills",
+    "date",
+    "cwd"
+  ]
+}

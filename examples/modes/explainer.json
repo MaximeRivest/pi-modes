@@ -1,0 +1,17 @@
+{
+  "key": "explainer",
+  "label": "explainer",
+  "opener": "add line comments between EVERY line of code to explain the syntax, why its, there, etc.\n\nadd a pseudo simplified code chunk in comments before each semantic code unit, this lets the user glance at the algorithm and logic without syntax details before then getting into the syntax and some edge cases and specificity.\n\ndont use tool just return the full annotated file in a a markdown code cell",
+  "systemPrompt": "add line comments between EVERY line of code to explain the syntax, why its, there, etc.\n\nadd a pseudo simplified code chunk in comments before each semantic code unit, this lets the user glance at the algorithm and logic without syntax details before then getting into the syntax and some edge cases and specificity.\n\ndont use tool just return the full annotated file in a a markdown code cell",
+  "removeSections": [
+    "available_tools",
+    "custom_tools_note",
+    "guidelines",
+    "pi_docs",
+    "append_prompt",
+    "project_context",
+    "skills",
+    "date",
+    "cwd"
+  ]
+}

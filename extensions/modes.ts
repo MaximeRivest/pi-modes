@@ -69,6 +69,25 @@ function saveMode(mode: ModeDef) {
   mkdirSync(modeDir(), { recursive: true });
   writeFileSync(modePath(mode.key), JSON.stringify(mode, null, 2) + "\n", "utf8");
 }
+function bundledExampleModeDir() { return join(__dirname, "..", "examples", "modes"); }
+function installBundledExampleModes(overwrite = false): { installed: string[]; skipped: string[] } {
+  const installed: string[] = [];
+  const skipped: string[] = [];
+  const dir = bundledExampleModeDir();
+  if (!existsSync(dir)) return { installed, skipped };
+  mkdirSync(modeDir(), { recursive: true });
+  for (const file of readdirSync(dir).filter((f) => f.endsWith(".json")).sort()) {
+    const source = join(dir, file);
+    const raw = readFileSync(source, "utf8");
+    const mode = valid(JSON.parse(raw));
+    if (!mode) continue;
+    const target = modePath(mode.key);
+    if (!overwrite && existsSync(target)) { skipped.push(mode.key); continue; }
+    writeFileSync(target, JSON.stringify(mode, null, 2) + "\n", "utf8");
+    installed.push(mode.key);
+  }
+  return { installed, skipped };
+}
 function escapeRegex(value: string) { return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); }
 function removeSectionByHeading(prompt: string, heading: string): string {
   const h = escapeRegex(heading);
@@ -492,6 +511,19 @@ export default function(pi: ExtensionAPI) {
       saveMode(mode);
       if (mode.key !== key) unlinkSync(path);
       ctx.ui.notify(`Saved mode: ${mode.key}`, "success");
+    },
+  });
+
+  pi.registerCommand("mode-install-examples", {
+    description: "Install bundled example prompt modes",
+    handler: async (args, ctx) => {
+      const overwrite = args.trim() === "--overwrite";
+      const { installed, skipped } = installBundledExampleModes(overwrite);
+      if (installed.length === 0 && skipped.length === 0) {
+        ctx.ui.notify("No bundled example modes found in this package.", "warning");
+        return;
+      }
+      ctx.ui.notify(`Installed ${installed.length} example mode${installed.length === 1 ? "" : "s"}${skipped.length ? `, skipped ${skipped.length} existing` : ""}.`, "success");
     },
   });
 

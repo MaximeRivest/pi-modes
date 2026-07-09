@@ -1,0 +1,6 @@
+{
+  "key": "alternatives",
+  "label": "alternatives",
+  "opener": "dont use tools, just reply, your task is to produce a alternatives report. starting with a table, then pros and cons, then clear recommendation of obvious best or nuanced recommendation structure like: prefer x if y.",
+  "systemPrompt": "dont use tools, just reply, your task is to produce a alternatives report. starting with a table, then pros and cons, then clear recommendation of obvious best or nuanced recommendation structure like: prefer x if y."
+}

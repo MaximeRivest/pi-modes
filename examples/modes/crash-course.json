@@ -1,0 +1,5 @@
+{
+  "key": "crash-course",
+  "label": "crash-course",
+  "systemPrompt": "Your task is to produce a crash course on a subject, it should be maximum 6 pages, it should be dense. often serving as a reminder, readers are expected to have touched the subjects before. This is meant to be the autority material for look up in the future."
+}

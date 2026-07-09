@@ -21,6 +21,8 @@ pi -e git:github.com/maximerivest/pi-modes
 - `/mode-new [key]` - create a custom mode from the TUI
 - `/mode-edit [key]` - edit a custom mode
 - `/mode-delete [key]` - delete a custom mode
+- `/mode-install-examples` - install the bundled example modes into `~/.pi/agent/modes/`
+- `/mode-install-examples --overwrite` - reinstall bundled examples, replacing existing files with the same keys
 
 Built-in modes:
 
@@ -30,6 +32,27 @@ Built-in modes:
 - `explain`
 
 Custom modes are saved as JSON in `~/.pi/agent/modes/`.
+
+## Example modes
+
+This repo includes curated public examples in [`examples/modes`](examples/modes):
+
+- `alternatives`
+- `boilerplate`
+- `code-gen`
+- `crash-course`
+- `explainer`
+- `grammarly`
+- `hard-nosed`
+- `organizer`
+- `project-docs`
+- `simplify`
+- `stackoverflow`
+- `surprise-reporter`
+- `talk-maker`
+- `technical`
+
+After installing the package, run `/mode-install-examples` in pi to copy them into your local mode directory.
 
 ## License
 
